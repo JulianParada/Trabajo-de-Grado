@@ -1,0 +1,28 @@
+{
+  "name": "server-express",
+  "version": "1.0.0",
+  "description": "Server Express que ofrece los servicios al Angular para GAT Gate, Contiene Node.js, Express, Mongodb y MongoClient",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongo",
+    "gatgate",
+    "rest",
+    "api"
+  ],
+  "author": "santiagoso",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "tedious": "^12.2.0"
+  }
+}
