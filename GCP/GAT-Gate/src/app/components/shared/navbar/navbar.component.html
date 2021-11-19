@@ -22,13 +22,25 @@
           <li><a routerLink="/public/welcome">Home</a></li>
           <li><a routerLink="public/dashboard">Monitoreo del Proyecto</a></li>
           <li><a routerLink="public/kumu">Relaciones del proyecto</a></li>
+          <li *ngIf="isAdmin"><a routerLink="admin/gestionar">Administrar Usuarios</a></li>
         </ul>
 
         <!--<button class="btn btn-danger navbar-btn">{{this.UsuarioBoton}}</button>-->
 
         <ul class="nav navbar-nav navbar-right">
           <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-          <li id="login_out"  ><a routerLink={{link}}  ><span class="glyphicon glyphicon-log-in" ></span> {{texto}}</a></li>
+          <li id="login_out" *ngIf="!isLogged" >
+            <a  routerLink="public/login" >
+              <span class="glyphicon glyphicon-log-in" >
+              </span> Login
+            </a>
+          </li>
+          <li id="login_out" *ngIf="isLogged" >
+            <a routerLink="public/welcome" (click)="onLogout()" >
+              <span class="glyphicon glyphicon-log-out" >
+              </span> Logout
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

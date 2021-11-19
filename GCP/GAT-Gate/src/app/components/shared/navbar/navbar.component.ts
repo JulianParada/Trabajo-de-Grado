@@ -10,35 +10,67 @@ import { UsersService } from 'src/app/services/users.service';
 export class NavbarComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
   public isLogged = false;
+  public isAdmin = false;
   public tituloNavBar = 'Bienvenido';
   public UsuarioBoton = 'Ingresar';
   public userUid: string = '';
   public link :string ="public/login"
   public texto :string ='Login'
+  public clase :string ='glyphicon glyphicon-log-in'
 
   ngOnInit(): void {
     this.getCurrentUser();
+    //window.location.reload();
+  }
+
+  getCurrentUser() {
     let aux = this.usersService.getToken();
-    console.log(aux);
-    if(aux==""){
-      this.texto = 'Login'
-      this.link = "public/login"
+
+    let rol = aux.substring(aux.length-5, aux.length)
+
+    if(rol == "Admin"){
+      this.isAdmin = true;
     }else{
-      this.texto = 'Logout'
-      this.link = ""
+      this.isAdmin = false;
+    }
+    if(aux==""){
+      this.isLogged = false;
+    }else{
+      this.isLogged = true;
     }
   }
 
+  onLogin(){
+    this.router.navigate(['public/login']);
+  }
+
+  onLogout() {
+    this.logout();
+    //this.router.navigate(['public/welcome']);
+  }
+
+  realizarOperacion(){
+    console.log("entre al onclick")
+    let aux = this.usersService.getToken();
+    if(aux==""){
+      this.clase ='glyphicon glyphicon-log-in'
+      this.texto = 'Login'
+      this.link = "public/login"
+      this.router.navigate(['public/login']);
+    }else{
+      this.logout();
+      this.clase ='glyphicon glyphicon-log-out'
+      this.texto = 'Logout'
+      this.link = "public/welcome"
+      this.router.navigate(['public/welcome']);
+    }
+  }
 
   logout(){
-    console.log("pepito")
     this.usersService.setToken("");
-    this.texto = 'Login'
-    this.link = "public/login"
+    this.isAdmin = false;
+    this.isLogged = false;
   }
-  getCurrentUser() {}
-
-  onLogout() {}
 
   iconClick() {}
 

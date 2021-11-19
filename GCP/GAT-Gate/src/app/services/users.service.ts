@@ -10,6 +10,7 @@ import { CookieService } from "ngx-cookie-service";
 
 export class UsersService {
   urlBase =  "https://us-central1-gat-gate.cloudfunctions.net/app";
+  //urlBase =  "http://localhost:8081";
   constructor(private http: HttpClient, private cookies: CookieService) {  }
 
   getUsers(): Observable<any>{

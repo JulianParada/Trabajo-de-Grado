@@ -16,15 +16,15 @@
           <p>GAT Gate</p>
       </div>
       <h1 class="login-h1">Para información detallada inicie sesión en GATGate</h1>
-      <form method="post">
+      <form >
           <div class="form-group">
             <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" required class="form-control form-input"/>
           </div>
           <div class="form-group">
             <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" required class="form-control form-input"/>
           </div>
-        <div class="forget-pwd-holder">
-          <a routerLink="/recuperar">¿Olvidaste tus credenciales? Recuperalas aquí</a>
+        <div class="text-danger" *ngIf="!iscorrect">
+          Contraseña Incorrecta!
         </div>
           <input type="submit" class="form-submit" value="Iniciar Sesión" (click)="login()">
       </form>

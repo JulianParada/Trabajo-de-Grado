@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component'
 import { GestionarCredencialesComponent } from './components/administrador/gestionar-credenciales/gestionar-credenciales.component';
 
 const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'public/welcome'},
   {path: 'public/welcome', component: WelcomeComponent},
   {path: 'public/kumu', component: KumuIntegrationComponent},
   {path: 'public/login', component: LoginComponent},

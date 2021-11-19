@@ -1,8 +1,17 @@
 const functions = require("firebase-functions");
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 var nodemailer = require('nodemailer');
+
+var corsOptions = {
+  //origin: "http://localhost:8081",
+  // origin: "http://localhost:4200",
+  origin: "https://gat-gate.firebaseapp.com"
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
