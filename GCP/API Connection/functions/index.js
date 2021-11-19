@@ -61,7 +61,7 @@ var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'plataformagatgate@gmail.com',
-    pass: 'gatgate2021'
+    pass: 'mzcnoyhcrxoehqlf'
   }
 });
 
